@@ -1,14 +1,14 @@
 {
-  "main.js": "/kalrasarthak/RefashApp.git/static/js/main.7a5145f8.chunk.js",
-  "main.js.map": "/kalrasarthak/RefashApp.git/static/js/main.7a5145f8.chunk.js.map",
-  "static/js/1.2f7e84cd.chunk.js": "/kalrasarthak/RefashApp.git/static/js/1.2f7e84cd.chunk.js",
-  "static/js/1.2f7e84cd.chunk.js.map": "/kalrasarthak/RefashApp.git/static/js/1.2f7e84cd.chunk.js.map",
-  "runtime~main.js": "/kalrasarthak/RefashApp.git/static/js/runtime~main.dcb55e77.js",
-  "runtime~main.js.map": "/kalrasarthak/RefashApp.git/static/js/runtime~main.dcb55e77.js.map",
-  "static/media/2.png": "/kalrasarthak/RefashApp.git/static/media/2.1860e27f.png",
-  "static/media/4.png": "/kalrasarthak/RefashApp.git/static/media/4.f01a210b.png",
-  "static/media/7.png": "/kalrasarthak/RefashApp.git/static/media/7.35c73ff5.png",
-  "index.html": "/kalrasarthak/RefashApp.git/index.html",
-  "precache-manifest.104dcd3adb8b7866e7100c71b53368ba.js": "/kalrasarthak/RefashApp.git/precache-manifest.104dcd3adb8b7866e7100c71b53368ba.js",
-  "service-worker.js": "/kalrasarthak/RefashApp.git/service-worker.js"
+  "main.js": "/RefashApp/static/js/main.7a5145f8.chunk.js",
+  "main.js.map": "/RefashApp/static/js/main.7a5145f8.chunk.js.map",
+  "static/js/1.f41c1915.chunk.js": "/RefashApp/static/js/1.f41c1915.chunk.js",
+  "static/js/1.f41c1915.chunk.js.map": "/RefashApp/static/js/1.f41c1915.chunk.js.map",
+  "runtime~main.js": "/RefashApp/static/js/runtime~main.9237066c.js",
+  "runtime~main.js.map": "/RefashApp/static/js/runtime~main.9237066c.js.map",
+  "static/media/2.png": "/RefashApp/static/media/2.1860e27f.png",
+  "static/media/4.png": "/RefashApp/static/media/4.f01a210b.png",
+  "static/media/7.png": "/RefashApp/static/media/7.35c73ff5.png",
+  "index.html": "/RefashApp/index.html",
+  "precache-manifest.6b0098c78e6903d3c2117c0adf0eadab.js": "/RefashApp/precache-manifest.6b0098c78e6903d3c2117c0adf0eadab.js",
+  "service-worker.js": "/RefashApp/service-worker.js"
 }
