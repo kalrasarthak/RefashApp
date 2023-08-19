@@ -100,9 +100,7 @@ const Footer = () => {
             <Left>
                 <Logo>ReFash.</Logo>
                 <Desc>
-                    There are many variations of passages of Lorem Ipsum available, but
-                    the majority have suffered alteration in some form, by injected
-                    humour, or randomised words which don't look even slightly believable.
+                    ReFash is an e-commerce platform to buy your favourite items
                 </Desc>
                 <SocialContainer>
                     <SocialIcon color='3B5999'>

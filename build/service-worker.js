@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/kalrasarthak/RefashApp.git/precache-manifest.104dcd3adb8b7866e7100c71b53368ba.js"
+  "/RefashApp/precache-manifest.6b0098c78e6903d3c2117c0adf0eadab.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/kalrasarthak/RefashApp.git/index.html", {
+workbox.routing.registerNavigationRoute("/RefashApp/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });

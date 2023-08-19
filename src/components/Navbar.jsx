@@ -48,6 +48,7 @@ text-align: center;
 
 const Logo = styled.h1`
   font-weight: bold;
+  color: black;
   ${mobile({ fontSize: "25px" })}
 `
 
@@ -63,6 +64,7 @@ ${mobile({ flex: 2, justifyContent: "center" })}
 const MenuItem = styled.div`
   font-size:14px;
   cursor: pointer;
+  color: black; 
   text-decoration : none;
   margin-left: 25px;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
@@ -82,15 +84,17 @@ const Navbar = () => {
         </Left>
 
         <Center>
-          <Logo>
-            ReFash.
-          </Logo>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <Logo>
+              ReFash.
+            </Logo>
+          </Link>
         </Center>
 
         <Right>
-          <Link to={`/register/`}><MenuItem>REGISTER</MenuItem></Link>
-          <Link to="/login/"><MenuItem>SIGN IN</MenuItem></Link>
-          <Link to="/cart/">
+          <Link to="/register/" style={{ textDecoration: 'none' }}><MenuItem style={{ fontSize: "15px" }}>REGISTER</MenuItem></Link>
+          <Link to="/login/" style={{ textDecoration: 'none' }}><MenuItem style={{ fontSize: "15px" }}>SIGN IN</MenuItem></Link>
+          <Link to="/cart/" style={{ textDecoration: 'none' }}>
             <MenuItem>
               <Badge badgeContent={4} color="primary">
                 <ShoppingCartOutlinedIcon />
@@ -99,7 +103,7 @@ const Navbar = () => {
           </Link>
         </Right>
       </Wrapper>
-    </Container>
+    </Container >
   )
 }
 

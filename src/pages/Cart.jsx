@@ -1,93 +1,94 @@
-import { Add, Remove } from '@mui/icons-material'
-import React from 'react'
-import styled from 'styled-components'
-import Announcements from '../components/Announcements'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-import { mobile } from '../responsive'
+import { Add, Remove } from '@mui/icons-material';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Announcements from '../components/Announcements';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import { mobile } from '../responsive';
+import { Link } from 'react-router-dom';
 
-const Container = styled.div``
+const Container = styled.div``;
 
 const Wrapper = styled.div`
-padding: 20px;
-${mobile({ padding: "10px" })}
-`
+  padding: 20px;
+  ${mobile({ padding: '10px' })}
+`;
 
 const Title = styled.h1`
-font-weight: 300;
-text-align: center;
-`
-
+  font-weight: 300;
+  text-align: center;
+`;
 
 const Top = styled.div`
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 20px;
-`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+`;
 
 const TopButton = styled.button`
-padding: 10px;
-font-weight: 600;
-cursor: pointer;
-border: ${props => props.type === "filled" && "none"};
-background-color: ${props => props.type === "filled" ? "black" : "transparent"};
-color: ${props => props.type === "filled" && "white"};
-`
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: ${(props) => props.type === 'filled' && 'none'};
+  background-color: ${(props) => (props.type === 'filled' ? 'grey' : 'transparent')};
+  color: ${(props) => props.type === 'filled' && 'white'};
+`;
 
 const TopTexts = styled.div`
-${mobile({ display: "none" })}
+  ${mobile({ display: 'none' })}
+`;
 
-`
 const TopText = styled.span`
   text-decoration: underline;
   cursor: pointer;
   margin: 0px 10px;
-`
+`;
 
 const Bottom = styled.div`
-display: flex;
-justify-content: space-between;
-${mobile({ flexDirection: "column" })}
-`
-const Info = styled.div`
-flex:3;
+  display: flex;
+  justify-content: space-between;
+  ${mobile({ flexDirection: 'column' })}
+`;
 
-`
+const Info = styled.div`
+  flex: 3;
+`;
+
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({ flexDirection: "column" })}
+  ${mobile({ flexDirection: 'column' })}
+`;
 
-`
 const ProductDetail = styled.div`
   flex: 2;
   display: flex;
-`
+`;
 
 const Image = styled.img`
   width: 200px;
-`
+`;
 
 const Details = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-`
+`;
 
-const ProductName = styled.span``
+const ProductName = styled.span``;
 
-const ProductId = styled.span``
+const ProductId = styled.span``;
 
 const ProductColor = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: ${(props) => props.color};
-`
+`;
 
-const ProductSize = styled.span``
+const ProductSize = styled.span``;
 
 const PriceDetail = styled.div`
   flex: 1;
@@ -95,31 +96,31 @@ const PriceDetail = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const ProductAmountContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-`
+`;
 
 const ProductAmount = styled.div`
   font-size: 24px;
   margin: 5px;
- ${mobile({ margin: "5px 15px" })}
-`
+  ${mobile({ margin: '5px 15px' })}
+`;
 
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
-  ${mobile({ marginBottom: "20px" })}
+  ${mobile({ marginBottom: '20px' })}
+`;
 
-`
 const Hr = styled.hr`
-background-color: #eee;
-border: none;
-height: 1px;
-`
+  background-color: #eee;
+  border: none;
+  height: 1px;
+`;
 
 const Summary = styled.div`
   flex: 1;
@@ -137,8 +138,8 @@ const SummaryItem = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
-  font-weight: ${(props) => props.type === "total" && "500"};
-  font-size: ${(props) => props.type === "total" && "24px"};
+  font-weight: ${(props) => props.type === 'total' && '500'};
+  font-size: ${(props) => props.type === 'total' && '24px'};
 `;
 
 const SummaryItemText = styled.span``;
@@ -153,8 +154,57 @@ const Button = styled.button`
   font-weight: 600;
 `;
 
-
 const Cart = () => {
+    // State variables for product quantities and total price
+    const [productQuantities, setProductQuantities] = useState({
+        jessieThunderShoes: 2, // Initial quantity for Jessie Thunder Shoes
+        hakuraTShirt: 1, // Initial quantity for Hakura T-Shirt
+    });
+
+    // Product prices (you can fetch these from your data)
+    const productPrices = {
+        jessieThunderShoes: 30,
+        hakuraTShirt: 20,
+    };
+
+    // Discount amount
+    const discountAmount = 5.90;
+    const deliveryCharge = 5.90;
+
+
+    // Function to increment product quantity
+    const incrementQuantity = (productId) => {
+        setProductQuantities((prevQuantities) => ({
+            ...prevQuantities,
+            [productId]: prevQuantities[productId] + 1,
+        }));
+    };
+
+    // Function to decrement product quantity
+    const decrementQuantity = (productId) => {
+        if (productQuantities[productId] > 1) {
+            setProductQuantities((prevQuantities) => ({
+                ...prevQuantities,
+                [productId]: prevQuantities[productId] - 1,
+            }));
+        }
+    };
+
+    // Calculate subtotal
+    const calculateSubtotal = () => {
+        let subtotal = 0;
+        for (const productId in productQuantities) {
+            subtotal += productQuantities[productId] * productPrices[productId];
+        }
+        return subtotal;
+    };
+
+    // Calculate total price with discount
+    const calculateTotalPrice = () => {
+        const subtotal = calculateSubtotal();
+        return subtotal - discountAmount + deliveryCharge;
+    };
+
     return (
         <Container>
             <Navbar />
@@ -162,12 +212,13 @@ const Cart = () => {
             <Wrapper>
                 <Title>YOUR BAG</Title>
                 <Top>
-                    <TopButton>CONTINUE SHOPPING</TopButton>
+                    <TopButton as={Link} to="/" type="filled">
+                        CONTINUE SHOPPING
+                    </TopButton>
                     <TopTexts>
                         <TopText>Shopping Bag (2)</TopText>
                         <TopText>Your Wishlist(0)</TopText>
                     </TopTexts>
-                    <TopButton type='filled'>CHECKOUT NOW</TopButton>
 
                 </Top>
                 <Bottom>
@@ -189,14 +240,12 @@ const Cart = () => {
                                 </Details>
                             </ProductDetail>
                             <PriceDetail>
-
                                 <ProductAmountContainer>
-                                    <Add />
-                                    <ProductAmount>2</ProductAmount>
-                                    <Remove />
+                                    <Add onClick={() => incrementQuantity('jessieThunderShoes')} />
+                                    <ProductAmount>{productQuantities.jessieThunderShoes}</ProductAmount>
+                                    <Remove onClick={() => decrementQuantity('jessieThunderShoes')} />
                                 </ProductAmountContainer>
-                                <ProductPrice>$ 30</ProductPrice>
-
+                                <ProductPrice>$ {productPrices.jessieThunderShoes}</ProductPrice>
                             </PriceDetail>
                         </Product>
                         <Hr />
@@ -218,42 +267,39 @@ const Cart = () => {
                             </ProductDetail>
                             <PriceDetail>
                                 <ProductAmountContainer>
-                                    <Add />
-                                    <ProductAmount>1</ProductAmount>
-                                    <Remove />
+                                    <Add onClick={() => incrementQuantity('hakuraTShirt')} />
+                                    <ProductAmount>{productQuantities.hakuraTShirt}</ProductAmount>
+                                    <Remove onClick={() => decrementQuantity('hakuraTShirt')} />
                                 </ProductAmountContainer>
-                                <ProductPrice>$ 20</ProductPrice>
+                                <ProductPrice>$ {productPrices.hakuraTShirt}</ProductPrice>
                             </PriceDetail>
                         </Product>
-
                     </Info>
                     <Summary>
                         <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                         <SummaryItem>
                             <SummaryItemText>Subtotal</SummaryItemText>
-                            <SummaryItemPrice>$ 80</SummaryItemPrice>
+                            <SummaryItemPrice>$ {calculateSubtotal()}</SummaryItemPrice>
                         </SummaryItem>
                         <SummaryItem>
-                            <SummaryItemText>Estimated Shipping</SummaryItemText>
-                            <SummaryItemPrice>$ 5.90</SummaryItemPrice>
+                            <SummaryItemText>Delivery</SummaryItemText>
+                            <SummaryItemPrice>$ {deliveryCharge.toFixed(2)}</SummaryItemPrice>
                         </SummaryItem>
                         <SummaryItem>
-                            <SummaryItemText>Shipping Discount</SummaryItemText>
-                            <SummaryItemPrice>$ -5.90</SummaryItemPrice>
+                            <SummaryItemText>Discount</SummaryItemText>
+                            <SummaryItemPrice>-$ {discountAmount.toFixed(2)}</SummaryItemPrice>
                         </SummaryItem>
                         <SummaryItem type="total">
                             <SummaryItemText>Total</SummaryItemText>
-                            <SummaryItemPrice>$ 80</SummaryItemPrice>
+                            <SummaryItemPrice>$ {calculateTotalPrice().toFixed(2)}</SummaryItemPrice>
                         </SummaryItem>
                         <Button>CHECKOUT NOW</Button>
                     </Summary>
-
                 </Bottom>
             </Wrapper>
             <Footer />
-
         </Container>
-    )
-}
+    );
+};
 
-export default Cart
+export default Cart;
